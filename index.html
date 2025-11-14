@@ -1,889 +1,916 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cem Özdemir | Yazılım Geliştirici</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cem Özdemir - Backend, API ve veritabanı odaklı yazılım geliştirici." />
-
-  <style>
-    :root {
-      --bg: #0f172a;          /* sayfa arka planı (koyu lacivert) */
-      --bg-alt: #111827;      /* kutular için hafif farklı koyu */
-      --card: #020617;        /* kart iç rengi */
-      --accent: #0ea5e9;      /* vurgu rengi (mavi) */
-      --accent-soft: rgba(14,165,233,0.08);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: rgba(148,163,184,0.35);
-      --radius: 14px;
-      --shadow: 0 18px 40px rgba(15,23,42,0.8);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(14,165,233,0.18), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 18px 16px 40px;
-    }
-
-    /* NAVBAR */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      margin-bottom: 10px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(15,23,42,0.96);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 8px 14px;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.7);
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #e0f2fe, #38bdf8 40%, #0f172a 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: #020617;
-      border: 1px solid rgba(148,163,184,0.5);
-    }
-
-    .nav-text {
-      display: flex;
-      flex-direction: column;
-      font-size: 11px;
-    }
-
-    .nav-text strong {
-      font-size: 13px;
-    }
-
-    .nav-text span {
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      font-size: 11px;
-    }
-
-    .nav-links a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--muted);
-      border: 1px solid transparent;
-      transition: all 0.15s ease-out;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      border-color: var(--border);
-      background: rgba(15,23,42,0.96);
-    }
-
-    .nav-cta {
-      font-size: 11px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(56,189,248,0.8);
-      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: #0b1120;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-      .nav {
-        justify-content: space-between;
-      }
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-      gap: 24px;
-      align-items: center;
-      padding-top: 22px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(31,41,55,0.9);
-    }
-
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hero-title {
-      font-size: clamp(28px, 4vw, 36px);
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(15,23,42,0.96);
-      color: var(--muted);
-    }
-
-    .tag-strong {
-      border-color: rgba(56,189,248,0.8);
-      background: var(--accent-soft);
-      color: #e0f2fe;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      padding: 8px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(15,23,42,0.96);
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.15s ease-out;
-    }
-
-    .btn-primary {
-      border-color: rgba(56,189,248,0.9);
-      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: #0b1120;
-      font-weight: 600;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba(15,23,42,0.9);
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero-box {
-      border-radius: var(--radius);
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      padding: 14px 14px 12px;
-      box-shadow: var(--shadow);
-      font-size: 12px;
-    }
-
-    .hero-box h2 {
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .hero-box ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 6px 0 0;
-    }
-
-    .hero-box li {
-      margin-bottom: 4px;
-      color: var(--muted);
-    }
-
-    /* GENEL BÖLÜM STİLİ */
-
-    section {
-      padding: 26px 0;
-      border-bottom: 1px solid rgba(31,41,55,0.9);
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-title {
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .section-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .two-cols {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 18px;
-    }
-
-    @media (max-width: 800px) {
-      .two-cols {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 14px 14px 12px;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.7);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .card h3 {
-      font-size: 14px;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    /* YETENEKLER */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    @media (max-width: 800px) {
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-    @media (max-width: 520px) {
-      .skills-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .skill-box {
-      background: rgba(15,23,42,0.96);
-      border-radius: 10px;
-      border: 1px solid rgba(148,163,184,0.35);
-      padding: 9px 10px;
-      font-size: 12px;
-    }
-
-    .skill-box strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .skill-box ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .skill-box li {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* ÇALIŞMA ŞEMASI */
-
-    .flow {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 14px 14px 12px;
-      font-size: 12px;
-    }
-
-    .flow-steps {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      row-gap: 12px;
-      column-gap: 8px;
-    }
-
-    .flow-step {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .flow-box {
-      min-width: 150px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.96);
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .flow-box strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-
-    .flow-arrow {
-      font-size: 16px;
-      color: var(--accent);
-    }
-
-    @media (max-width: 680px) {
-      .flow-steps {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .flow-arrow {
-        transform: rotate(90deg);
-      }
-    }
-
-    /* DENEYİM */
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-
-    .timeline-item {
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid rgba(31,41,55,0.9);
-      background: rgba(15,23,42,0.96);
-    }
-
-    .timeline-item strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-
-    .timeline-meta {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    /* PROJELER */
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    @media (max-width: 720px) {
-      .projects-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .project {
-      background: rgba(15,23,42,0.96);
-      border-radius: 10px;
-      border: 1px solid rgba(148,163,184,0.4);
-      padding: 10px 11px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .project-title {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .project-title strong {
-      color: var(--text);
-    }
-
-    .project-tag {
-      font-size: 10px;
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-    }
-
-    /* İLETİŞİM */
-
-    .contact-box {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      border: 1px solid rgba(56,189,248,0.6);
-      padding: 14px 14px 12px;
-      box-shadow: var(--shadow);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-      font-size: 12px;
-    }
-
-    .contact-item {
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      padding: 6px 10px;
-      background: rgba(15,23,42,0.98);
-    }
-
-    .contact-item a {
-      text-decoration: none;
-      color: #e0f2fe;
-    }
-
-    footer {
-      margin-top: 24px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      padding-top: 8px;
-      border-top: 1px solid rgba(31,41,55,0.9);
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cem Özdemir - Full-Stack Developer Portfolio">
+    <meta name="keywords" content="Full-Stack Developer, Web Development, Node.js, Vue.js, Docker, PostgreSQL">
+    <meta name="author" content="Cem Özdemir">
+    <title>Cem Özdemir | Full-Stack Developer</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="page">
-
-    <!-- NAV -->
-    <header>
-      <div class="nav">
-        <div class="nav-left">
-          <div class="nav-avatar">CÖ</div>
-          <div class="nav-text">
-            <strong>Cem Özdemir</strong>
-            <span>Yazılım Geliştirici</span>
-          </div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="#home">Cem Özdemir</a>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+                        <li><a href="#about" class="nav-link">Hakkımda</a></li>
+                        <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+                        <li><a href="#experience" class="nav-link">Deneyim</a></li>
+                        <li><a href="#projects" class="nav-link">Projeler</a></li>
+                        <li><a href="#contact" class="nav-link">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
-        <nav class="nav-links">
-          <a href="#about">Hakkımda</a>
-          <a href="#skills">Yetenekler</a>
-          <a href="#flow">Çalışma Şeması</a>
-          <a href="#experience">Deneyim</a>
-          <a href="#projects">Projeler</a>
-          <a href="#contact">İletişim</a>
-        </nav>
-        <a href="#contact" class="nav-cta">İletişime Geç</a>
-      </div>
-    </header>
+    </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <h1 class="hero-title">
-          Merhaba, ben <span>Cem Özdemir</span>.
-        </h1>
-        <p class="hero-subtitle">
-          Backend ağırlıklı çalışan, API ve veritabanı odaklı çözümler üreten bir yazılım geliştiriciyim.
-          İş süreçlerini sadeleştiren ve bakımı kolay sistemler kurmayı seviyorum.
-        </p>
-
-        <div class="hero-tags">
-          <span class="tag tag-strong">Python · Node.js · MSSQL</span>
-          <span class="tag">REST API Geliştirme</span>
-          <span class="tag">Veri modelleme</span>
-          <span class="tag">Kurumsal projeler</span>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Projeniz için yazın</a>
-          <a href="#projects" class="btn">Örnek çalışmalarımı görün</a>
-        </div>
-
-        <p class="hero-note">
-          Kısa bir mail ile mevcut sorununuzu veya hayalinizdeki sistemi anlatmanız,
-          teknik çözümü konuşmamız için yeterli.
-        </p>
-      </div>
-
-      <aside class="hero-box">
-        <h2>Ne tür işler yapıyorum?</h2>
+    <!-- Side Navigation (for scrolled state) -->
+    <!-- 
+    <div class="side-nav" id="sideNav">
         <ul>
-          <li>• Yeni projeler için backend & veritabanı tasarımı</li>
-          <li>• Mevcut sistemlerde performans problemi yaşayan sorguların iyileştirilmesi</li>
-          <li>• Farklı uygulamalar arasında REST API entegrasyonları</li>
-          <li>• Yönetim ve operasyon ekipleri için raporlama altyapıları</li>
+            <li><a href="#home" class="side-link">Ana Sayfa</a></li>
+            <li><a href="#about" class="side-link">Hakkımda</a></li>
+            <li><a href="#skills" class="side-link">Yetenekler</a></li>
+            <li><a href="#experience" class="side-link">Deneyim</a></li>
+            <li><a href="#projects" class="side-link">Projeler</a></li>
+            <li><a href="#contact" class="side-link">İletişim</a></li>
         </ul>
-      </aside>
-    </section>
+    </div>
+    -->
 
-    <!-- HAKKIMDA -->
-    <section id="about">
-      <h2 class="section-title">Hakkımda</h2>
-      <p class="section-subtitle">
-        Kısaca kimim, ne yaparım ve birlikte çalışırken nasıl bir yaklaşım bekleyebilirsiniz?
-      </p>
-
-      <div class="two-cols">
-        <div class="card">
-          <p>
-            Ben <strong>Cem Özdemir</strong>. Özellikle veri tabanı, iş kuralları ve API katmanı
-            üzerine yoğunlaşmış bir yazılım geliştiricisiyim.
-          </p>
-          <p>
-            Odak noktam; iş ihtiyacını iyi anlamak, gereksiz karmaşıklıktan kaçınmak
-            ve yıllarca ayakta kalabilecek, bakımı kolay sistemler kurmak.
-          </p>
-          <p>
-            Teknik kısmı kadar, teknik olmayan ekiplerle sade bir dilde konuşabilmeye
-            de önem veriyorum. “Bu ekran neden böyle çalışıyor?” sorusuna, teknik terimlere boğmadan yanıt verebilmeyi hedeflerim.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Kısaca çalışma tarzım</h3>
-          <p>Çalışırken özellikle şunlara dikkat ederim:</p>
-          <ul style="margin-top:6px; padding-left:16px;">
-            <li>İhtiyacı netleştiren kısa toplantılar</li>
-            <li>Veri modelini baştan doğru kurgulama</li>
-            <li>Dokümante edilmiş REST API’ler</li>
-            <li>Basit ama anlaşılır loglama ve hata yönetimi</li>
-            <li>Gerektiğinde küçük eğitim / aktarım oturumları</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- YETENEKLER -->
-    <section id="skills">
-      <h2 class="section-title">Yetenekler</h2>
-      <p class="section-subtitle">
-        En çok değer kattığım alanlar ve kullandığım teknolojiler.
-      </p>
-
-      <div class="skills-grid">
-        <div class="skill-box">
-          <strong>Backend & API</strong>
-          <ul>
-            <li>REST API tasarımı</li>
-            <li>Python / Node.js tabanlı servisler</li>
-            <li>JSON tabanlı veri alışverişi</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <strong>Veritabanı</strong>
-          <ul>
-            <li>MSSQL üzerinde kompleks sorgular</li>
-            <li>Stored procedure & performans</li>
-            <li>Raporlama odaklı veri modeli</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <strong>Entegrasyon</strong>
-          <ul>
-            <li>3. parti API’lerle entegrasyon</li>
-            <li>Veri senkronizasyonu</li>
-            <li>Kimlik doğrulama / güvenlik temelleri</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <strong>İş Süreci Dijitalleştirme</strong>
-          <ul>
-            <li>Excel / manuel süreçlerin sisteme alınması</li>
-            <li>Onay akışları</li>
-            <li>Görev & durum takibi</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <strong>Altyapı & Araçlar</strong>
-          <ul>
-            <li>Git ile versiyon kontrol</li>
-            <li>Temel Linux / sunucu yönetimi</li>
-            <li>Bulut tabanlı servisler (AWS vb.)</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <strong>İletişim</strong>
-          <ul>
-            <li>Teknik olmayan ekiplere sade anlatım</li>
-            <li>Temiz dokümantasyon</li>
-            <li>Uzaktan çalışma disiplini</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ÇALIŞMA ŞEMASI -->
-    <section id="flow">
-      <h2 class="section-title">Çalışma Şemam</h2>
-      <p class="section-subtitle">
-        Birlikte çalışmaya başladığımızda tipik olarak aşağıdaki adımlardan geçeriz.
-      </p>
-
-      <div class="flow">
-        <p>
-          Bu şema, ister sıfırdan yeni bir sistem kuralım ister mevcut bir süreci
-          iyileştirelim, genelde izlediğim yolun özetidir.
-        </p>
-
-        <div class="flow-steps">
-          <div class="flow-step">
-            <div class="flow-box">
-              <strong>1. İhtiyaç & keşif</strong>
-              Mevcut süreç, kullanılan araçlar ve hedefler üzerinden kısa bir analiz.
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="code-line">
+                        <span class="code-symbol">&lt;</span>
+                        <span class="code-tag">developer</span>
+                        <span class="code-symbol">&gt;</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="greeting">Merhaba, Ben</span>
+                        <span class="name">Cem Özdemir</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        <span class="typing-text"></span>
+                        <span class="cursor">|</span>
+                    </p>
+                    <p class="hero-description">
+                        Kahve kokusu eşliğinde kod satırlarıyla dans eden bir Full-Stack yazılımcı. 
+                        Docker Compose ile mikroservis mimarileri kuruyor, Vue.js ile modern arayüzler 
+                        geliştiriyorum. ☕💻
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">İletişime Geç</a>
+                        <a href="#projects" class="btn btn-secondary">Projelerim</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/cemozdemir2" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/cem-%C3%B6zdemir-7006b5198/" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:cemozdemirr@outlook.com.tr" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="assets/images/profile.png" alt="Cem Özdemir">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
             </div>
-            <div class="flow-arrow">➜</div>
-          </div>
-
-          <div class="flow-step">
-            <div class="flow-box">
-              <strong>2. Tasarım & planlama</strong>
-              Veritabanı, API uçları ve iş akışının kaba tasarımı, önceliklendirme.
-            </div>
-            <div class="flow-arrow">➜</div>
-          </div>
-
-          <div class="flow-step">
-            <div class="flow-box">
-              <strong>3. Geliştirme & geri bildirim</strong>
-              Parça parça geliştirme, test ortamında deneme ve birlikte inceleme.
-            </div>
-            <div class="flow-arrow">➜</div>
-          </div>
-
-          <div class="flow-step">
-            <div class="flow-box">
-              <strong>4. Canlıya alma & iyileştirme</strong>
-              Canlı sistem, log ve izleme ile gerektiğinde ek optimizasyon.
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- DENEYİM -->
-    <section id="experience">
-      <h2 class="section-title">Deneyim</h2>
-      <p class="section-subtitle">
-        Özet olarak hangi tip projelerde ve rollerde yer aldım?
-      </p>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <strong>Yazılım Geliştirici</strong>
-          <div class="timeline-meta">2017 – Günümüz · Backend & veri odaklı projeler</div>
-          <p>
-            Farklı sektörlerde; veritabanı yoğun uygulamalar, süreç otomasyonu ve
-            API entegrasyonları içeren projelerde yer aldım.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <strong>Raporlama & veri çözümleri</strong>
-          <div class="timeline-meta">Operasyon & yönetim ekipleriyle çalışma</div>
-          <p>
-            Karmaşık sorguların sadeleştirildiği, performans odaklı raporlama altyapıları
-            ve dashboard’lar için backend geliştirmeleri yaptım.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <strong>Entegrasyon projeleri</strong>
-          <div class="timeline-meta">3. parti servisler ile veri alışverişi</div>
-          <p>
-            Harici API’lerle entegrasyon, veri doğrulama, hata yönetimi ve loglama gibi
-            konuların kritik olduğu projelerde aktif rol aldım.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJELER -->
-    <section id="projects">
-      <h2 class="section-title">Örnek Çalışmalar</h2>
-      <p class="section-subtitle">
-        Detay isimler gizlenebilir ama aşağıdaki tipte projelerde deneyim sahibiyim.
-      </p>
-
-      <div class="projects-grid">
-        <div class="project">
-          <div class="project-title">
-            <strong>Operasyon izleme paneli</strong>
-            <span class="project-tag">MSSQL · API</span>
-          </div>
-          <p>
-            Farklı tablolardan gelen verileri tek ekranda toplayan, filtrelenebilir ve
-            performanslı çalışan bir backend katmanı.
-          </p>
-        </div>
-
-        <div class="project">
-          <div class="project-title">
-            <strong>REST API katmanı</strong>
-            <span class="project-tag">Python / Node.js</span>
-          </div>
-          <p>
-            Birden fazla uygulamanın aynı veri modelini kullanmasını sağlayan,
-            dokümante edilmiş REST API uçları.
-          </p>
-        </div>
-
-        <div class="project">
-          <div class="project-title">
-            <strong>Veri temizleme & dönüşüm</strong>
-            <span class="project-tag">ETL benzeri yapı</span>
-          </div>
-          <p>
-            Farklı sistemlerden gelen verilerin temizlenip, tek raporlama
-            yapısında birleştirilmesi için arka plan süreçleri.
-          </p>
-        </div>
-
-        <div class="project">
-          <div class="project-title">
-            <strong>İş süreci dijitalleştirme</strong>
-            <span class="project-tag">Süreç otomasyonu</span>
-          </div>
-          <p>
-            Excel ve e-posta üzerinden yürüyen onay süreçlerinin, veritabanı ve
-            servis tabanlı bir yapıya taşınması.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- İLETİŞİM -->
-    <section id="contact">
-      <h2 class="section-title">İletişim</h2>
-      <p class="section-subtitle">
-        Projenizi, yaşadığınız bir problemi veya aklınızdaki fikri kısaca yazmanız yeterli.
-      </p>
-
-      <div class="contact-box">
-        <p>
-          Uzun uzun teknik doküman hazırlamanıza gerek yok. Kısaca:
-        </p>
-        <ul style="margin-top:6px; padding-left:16px;">
-          <li>Hangi alanda bir sistem / geliştirme istediğinizi,</li>
-          <li>Varsa mevcutta kullandığınız yazılımları,</li>
-          <li>Yaklaşık zaman beklentinizi</li>
-        </ul>
-        <p style="margin-top:6px;">
-          yazarsanız, birlikte nasıl ilerleyebileceğimizi netleştiririz.
-        </p>
-
-        <div class="contact-row">
-          <div class="contact-item">
-            <strong>Mail:</strong>
-            <a href="mailto:info@cemozdemir.net.tr">info@cemozdemir.net.tr</a>
-          </div>
-          <div class="contact-item">
-            <strong>Site:</strong>
-            <a href="https://cemozdemir.net.tr" target="_blank" rel="noopener noreferrer">
-              cemozdemir.net.tr
+        <div class="scroll-indicator">
+            <a href="#about">
+                <i class="fas fa-chevron-down"></i>
             </a>
-          </div>
-          <!-- Bunları kendi profil linklerinle değiştir -->
-          <div class="contact-item">
-            <strong>LinkedIn:</strong>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-              Profilim
-            </a>
-          </div>
-          <div class="contact-item">
-            <strong>GitHub:</strong>
-            <a href="https://github.com/cemozdemir2" target="_blank" rel="noopener noreferrer">
-              github.com/cemozdemir2
-            </a>
-          </div>
         </div>
-      </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Cem Özdemir · Bu site GitHub Pages üzerinde barındırılmaktadır.
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hakkımda</h2>
+                <p>Kimim ve Ne Yapıyorum?</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/images/about.jpg" alt="About Cem">
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3>43+</h3>
+                            <p>GitHub Katkısı</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>4+</h3>
+                            <p>Açık Kaynak Proje</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Full-Stack Yazılım Geliştirici</h3>
+                    <p class="lead">
+                        Merhaba! Ben Cem, kahve kokusu eşliğinde kod satırlarıyla dans eden bir 
+                        Full-Stack yazılımcısıyım. Linux üzerinde Docker Compose ile çoklu konteyner 
+                        mimarileri kurarak, küçük ama güçlü REST API'ler ve mikroservisleri bir arada 
+                        çalıştırmayı seviyorum.
+                    </p>
+                    <p>
+                        Ön yüz tarafında kullanıcı yolculuğunu ön planda tutarak Vue.js ve Bootstrap 
+                        ile hem göze hem de klavyeye hitap eden arayüzler geliştiriyorum. Veritabanı 
+                        katmanında ise MS SQL'den PostgreSQL'e, MySQL'den phpMyAdmin'e kadar çeşitli 
+                        araçlarla veri modellerini şekillendiriyorum.
+                    </p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                            <span class="info-value">cemozdemirr@outlook.com.tr</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-map-marker-alt"></i> Konum:</span>
+                            <span class="info-value">Türkiye</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-briefcase"></i> Durum:</span>
+                            <span class="info-value">Freelance İşlere Açık</span>
+                        </div>
+                    </div>
+                    <blockquote class="quote">
+                        "Kodumda 'okunabilirlik' ve 'performans' benim için iki kilit kelime: 
+                        Her satırda bir amacım var, gereksiz karmaşıklıktan kaçınırım ve 
+                        testlerimle hatalara asla şans tanımam."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Yetenekler</h2>
+                <p>Teknolojiler ve Araçlar</p>
+            </div>
+            <div class="skills-content">
+                <!-- Backend Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Back-End</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js & Express</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">REST API Development</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-palette"></i> Front-End</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Vue.js</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5 & CSS3</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Bootstrap</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Veritabanı</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">PostgreSQL</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MS SQL Server</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MySQL</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps & Tools -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> DevOps & Araçlar</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker & Docker Compose</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Linux System Administration</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git & GitHub</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Azure & AWS</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Icons -->
+            <div class="tech-stack">
+                <h3>Teknoloji Yığınım</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" title="Docker">
+                        <i class="fab fa-docker"></i>
+                        <span>Docker</span>
+                    </div>
+                    <div class="tech-icon" title="Node.js">
+                        <i class="fab fa-node-js"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="tech-icon" title="Vue.js">
+                        <i class="fab fa-vuejs"></i>
+                        <span>Vue.js</span>
+                    </div>
+                    <div class="tech-icon" title="JavaScript">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-icon" title="Python">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-icon" title="Java">
+                        <i class="fab fa-java"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="tech-icon" title="Linux">
+                        <i class="fab fa-linux"></i>
+                        <span>Linux</span>
+                    </div>
+                    <div class="tech-icon" title="Git">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-icon" title="Bootstrap">
+                        <i class="fab fa-bootstrap"></i>
+                        <span>Bootstrap</span>
+                    </div>
+                    <div class="tech-icon" title="HTML5">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-icon" title="CSS3">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-icon" title="AWS">
+                        <i class="fab fa-aws"></i>
+                        <span>AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Deneyim</h2>
+                <p>Profesyonel Yolculuğum</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Full-Stack Developer</h3>
+                        <span class="timeline-date">
+                            <i class="fas fa-calendar"></i> 2023 - Günümüz
+                        </span>
+                        <span class="company">Freelance</span>
+                        <p>
+                            Docker Compose ile mikroservis mimarileri, REST API geliştirme, 
+                            Vue.js ile modern SPA uygulamaları ve veritabanı optimizasyonu üzerine 
+                            çalışmalar yapıyorum.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Node.js</span>
+                            <span>Vue.js</span>
+                            <span>Docker</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Backend Developer</h3>
+                        <span class="timeline-date">
+                            <i class="fas fa-calendar"></i> 2022 - 2023
+                        </span>
+                        <span class="company">Çeşitli Projeler</span>
+                        <p>
+                            REST API tasarımı ve geliştirme, veritabanı modelleme, 
+                            sistem entegrasyonları ve performans optimizasyonu üzerine çalıştım.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>MS SQL</span>
+                            <span>REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Web Development Journey</h3>
+                        <span class="timeline-date">
+                            <i class="fas fa-calendar"></i> 2021 - 2022
+                        </span>
+                        <span class="company">Öğrenme & Geliştirme</span>
+                        <p>
+                            Modern web teknolojileri, konteynerizasyon, mikroservis mimarileri 
+                            ve cloud computing üzerine yoğun eğitim ve pratik çalışmalar.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>JavaScript</span>
+                            <span>Vue.js</span>
+                            <span>Linux</span>
+                            <span>Swagger</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projeler</h2>
+                <p>Geliştirdiğim Açık Kaynak Projeler</p>
+            </div>
+            <template id="mobilePanelTemplate">
+        <div class="project-detail-panel mobile-panel">
+            <div class="detail-panel-header">
+                <button class="close-panel close-mobile-panel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="detail-panel-content">
+                <div class="detail-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Yükleniyor...</p>
+                </div>
+                <div class="detail-loaded" style="display: none;">
+                    <div class="repo-header">
+                        <h2 class="mobile-repoName"></h2>
+                        <a class="mobile-repoLink github-link" href="#" target="_blank">
+                            <i class="fab fa-github"></i> GitHub'da Aç
+                        </a>
+                    </div>
+                    <p class="mobile-repoDescription repo-description"></p>
+                    
+                    <div class="repo-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span class="mobile-repoStars">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="mobile-repoForks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-eye"></i>
+                            <span class="mobile-repoWatchers">0</span>
+                        </div>
+                    </div>
+
+                    <div class="repo-info">
+                        <div class="info-item">
+                            <i class="fas fa-code"></i>
+                            <span class="mobile-repoLanguage">-</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span class="mobile-repoUpdated">-</span>
+                        </div>
+                    </div>
+
+                    <div class="file-structure">
+                        <h3><i class="fas fa-folder-open"></i> Dosya Yapısı</h3>
+                        <div class="mobile-fileTree file-tree"></div>
+                    </div>
+
+                    <div class="readme-section">
+                        <h3><i class="fas fa-file-alt"></i> README.md</h3>
+                        <div class="mobile-readmeContent readme-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+            <div class="projects-container">
+                <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card-link" data-repo="cemozdemir2/poseidon-ip-device-monitoring-java">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Poseidon IP Device Monitoring <i class="fab fa-github"></i></h3>
+                            <p>
+                                IP cihazlarını izlemek için Java ile geliştirilmiş güçlü bir monitoring sistemi. 
+                                Real-time cihaz durumu takibi ve bildirim sistemi.
+                            </p>
+                            <div class="project-tags">
+                                <span>Java</span>
+                                <span>Networking</span>
+                                <span>Monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                <!-- Project 2 -->
+                <div class="project-card-link" data-repo="cemozdemir2/me-sdp-ticket-migration">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>ManageEngine ServiceDesk Ticket Migration <i class="fab fa-github"></i></h3>
+                            <p>
+                                ManageEngine ServiceDesk ve Excel arasında ticket transferini sağlayan Python tabanlı 
+                                migration aracı. Veri entegrasyonu ve otomasyonu.
+                            </p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>Automation</span>
+                                <span>Data Migration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                <!-- Project 3 -->
+                <div class="project-card-link" data-repo="cemozdemir2/cemozdemir2.github.io">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Kişisel Portfolio Website <i class="fab fa-github"></i></h3>
+                            <p>
+                                Modern ve responsive tasarıma sahip kişisel portfolio websitesi. 
+                                GitHub Pages üzerinde yayında.
+                            </p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                <!-- Project 4 -->
+                <div class="project-card-link" data-repo="cemozdemir2/docker-microservices">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Docker Compose Microservices <i class="fab fa-github"></i></h3>
+                            <p>
+                                Çoklu konteyner mimarileri ile ölçeklenebilir mikroservis uygulamaları. 
+                                REST API, veritabanı ve cache servisleri içerir.
+                            </p>
+                            <div class="project-tags">
+                                <span>Docker</span>
+                                <span>Node.js</span>
+                                <span>PostgreSQL</span>
+                                <span>Redis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                <!-- Project 5 -->
+                <div class="project-card-link" data-repo="cemozdemir2/vue-admin-dashboard">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Vue.js Admin Dashboard <i class="fab fa-github"></i></h3>
+                            <p>
+                                Modern admin paneli uygulaması. Veri görselleştirme, kullanıcı yönetimi 
+                                ve real-time güncellemeler.
+                            </p>
+                            <div class="project-tags">
+                                <span>Vue.js</span>
+                                <span>Bootstrap</span>
+                                <span>Chart.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                <!-- Project 6 -->
+                <div class="project-card-link" data-repo="cemozdemir2/enterprise-rest-api">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Enterprise REST API <i class="fab fa-github"></i></h3>
+                            <p>
+                                Güvenli, ölçeklenebilir ve dokümante edilmiş REST API. JWT authentication, 
+                                rate limiting ve comprehensive error handling.
+                            </p>
+                            <div class="project-tags">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>JWT</span>
+                                <span>Swagger</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project Detail Panel -->
+            <div class="project-detail-panel" id="projectDetailPanel">
+                <div class="detail-panel-header">
+                    <button class="close-panel" id="closePanel">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="detail-panel-content">
+                    <div class="detail-loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Yükleniyor...</p>
+                    </div>
+                    <div class="detail-loaded" style="display: none;">
+                        <div class="repo-header">
+                            <h2 id="repoName"></h2>
+                            <a id="repoLink" href="#" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i> GitHub'da Aç
+                            </a>
+                        </div>
+                        <p id="repoDescription" class="repo-description"></p>
+                        
+                        <div class="repo-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-star"></i>
+                                <span id="repoStars">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-code-branch"></i>
+                                <span id="repoForks">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-eye"></i>
+                                <span id="repoWatchers">0</span>
+                            </div>
+                        </div>
+
+                        <div class="repo-info">
+                            <div class="info-item">
+                                <i class="fas fa-code"></i>
+                                <span id="repoLanguage">-</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar"></i>
+                                <span id="repoUpdated">-</span>
+                            </div>
+                        </div>
+
+                        <div class="file-structure">
+                            <h3><i class="fas fa-folder-open"></i> Dosya Yapısı</h3>
+                            <div id="fileTree" class="file-tree"></div>
+                        </div>
+
+                        <div class="readme-section">
+                            <h3><i class="fas fa-file-alt"></i> README.md</h3>
+                            <div id="readmeContent" class="readme-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-project-detail-panel" id="mobileDetailPanel">
+                <div class="detail-panel-header">
+                    <button class="close-panel" id="closeMobilePanel">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="detail-panel-content">
+                    <div class="detail-loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Yükleniyor...</p>
+                    </div>
+                    <div class="detail-loaded" style="display: none;">
+                        <div class="repo-header">
+                            <h2 id="repoName"></h2>
+                            <a id="repoLink" href="#" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i> GitHub'da Aç
+                            </a>
+                        </div>
+                        <p id="repoDescription" class="repo-description"></p>
+                        
+                        <div class="repo-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-star"></i>
+                                <span id="repoStars">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-code-branch"></i>
+                                <span id="repoForks">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-eye"></i>
+                                <span id="repoWatchers">0</span>
+                            </div>
+                        </div>
+
+                        <div class="repo-info">
+                            <div class="info-item">
+                                <i class="fas fa-code"></i>
+                                <span id="repoLanguage">-</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar"></i>
+                                <span id="repoUpdated">-</span>
+                            </div>
+                        </div>
+
+                        <div class="file-structure">
+                            <h3><i class="fas fa-folder-open"></i> Dosya Yapısı</h3>
+                            <div id="fileTree" class="file-tree"></div>
+                        </div>
+
+                        <div class="readme-section">
+                            <h3><i class="fas fa-file-alt"></i> README.md</h3>
+                            <div id="readmeContent" class="readme-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-title">
+                <h2>İletişim</h2>
+                <p>Benimle İletişime Geçin</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>İletişim Bilgileri</h3>
+                    <p class="contact-description">
+                        Yeni projeler, işbirliği fırsatları veya sadece merhaba demek için 
+                        benimle iletişime geçebilirsiniz. Size en kısa sürede geri dönüş yapacağım.
+                    </p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <a href="mailto:cemozdemirr@outlook.com.tr">cemozdemirr@outlook.com.tr</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/cemozdemir2" target="_blank">github.com/cemozdemir2</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/cem-%C3%B6zdemir-7006b5198/" target="_blank">
+                                    LinkedIn Profilim
+                                </a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Konum</h4>
+                                <p>Türkiye</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://github.com/cemozdemir2" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/cem-%C3%B6zdemir-7006b5198/" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:cemozdemirr@outlook.com.tr" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h3>Mesaj Gönder</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Ad Soyad</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınız Soyadınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="ornek@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Konu</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Mesaj Konusu">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesaj</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Mesajınız..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Cem Özdemir</h3>
+                    <p>Full-Stack Developer</p>
+                    <p class="footer-quote">"Kod, en iyi kaliteyle konuştuğunda; insanlar onu okumayı sever."</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Bağlantılar</h4>
+                    <ul>
+                        <li><a href="#home">Ana Sayfa</a></li>
+                        <li><a href="#about">Hakkımda</a></li>
+                        <li><a href="#skills">Yetenekler</a></li>
+                        <li><a href="#projects">Projeler</a></li>
+                        <li><a href="#contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <div class="social-icons">
+                        <a href="https://github.com/cemozdemir2" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/cem-%C3%B6zdemir-7006b5198/" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:cemozdemirr@outlook.com.tr">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cem Özdemir. Tüm Hakları Saklıdır.</p>
+                <p>Designed & Developed with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
