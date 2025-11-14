@@ -4,29 +4,20 @@
   <meta charset="UTF-8" />
   <title>Cem Özdemir | Yazılım Geliştirici</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cem Özdemir - Yazılım Geliştirici, backend, API ve veri odaklı çözümler." />
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Cem Özdemir - Backend, API ve veritabanı odaklı yazılım geliştirici." />
 
   <style>
     :root {
-      --bg: #020617;
-      --bg-alt: #020617;
-      --card: #020617;
-      --card2: #020617;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --accent-strong: #0ea5e9;
+      --bg: #0f172a;          /* sayfa arka planı (koyu lacivert) */
+      --bg-alt: #111827;      /* kutular için hafif farklı koyu */
+      --card: #020617;        /* kart iç rengi */
+      --accent: #0ea5e9;      /* vurgu rengi (mavi) */
+      --accent-soft: rgba(14,165,233,0.08);
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --border: rgba(148, 163, 184, 0.25);
-      --radius-lg: 18px;
-      --radius-xl: 24px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-subtle: 0 10px 35px rgba(15, 23, 42, 0.7);
+      --border: rgba(148,163,184,0.35);
+      --radius: 14px;
+      --shadow: 0 18px 40px rgba(15,23,42,0.8);
     }
 
     * {
@@ -35,210 +26,175 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%),
-        radial-gradient(circle at top right, rgba(94, 234, 212, 0.16), transparent 55%),
-        radial-gradient(circle at bottom, rgba(79, 70, 229, 0.2), transparent 60%),
+        radial-gradient(circle at top, rgba(14,165,233,0.18), transparent 60%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding: 0 16px 48px;
+    }
+
+    a {
+      color: inherit;
     }
 
     .page {
-      max-width: 1080px;
+      max-width: 960px;
       margin: 0 auto;
+      padding: 18px 16px 40px;
     }
 
-    /* NAV */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0 10px;
+    /* NAVBAR */
+
+    header {
       position: sticky;
       top: 0;
       z-index: 20;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      margin-bottom: 10px;
     }
 
-    .nav-inner {
-      width: 100%;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
-      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.8);
-      padding: 8px 18px;
+    .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.7);
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .nav-avatar {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #e0f2fe, #38bdf8 35%, #0f172a 75%);
+      background: radial-gradient(circle at 30% 0, #e0f2fe, #38bdf8 40%, #0f172a 80%);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 14px;
       font-weight: 700;
-      font-size: 16px;
-      color: #0f172a;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.8);
+      color: #020617;
+      border: 1px solid rgba(148,163,184,0.5);
     }
 
-    .nav-name {
+    .nav-text {
       display: flex;
       flex-direction: column;
-      gap: 0;
-    }
-
-    .nav-name strong {
-      font-size: 14px;
-    }
-
-    .nav-name span {
       font-size: 11px;
+    }
+
+    .nav-text strong {
+      font-size: 13px;
+    }
+
+    .nav-text span {
       color: var(--muted);
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 12px;
+      gap: 10px;
+      font-size: 11px;
     }
 
     .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
       padding: 6px 10px;
       border-radius: 999px;
+      text-decoration: none;
+      color: var(--muted);
       border: 1px solid transparent;
-      transition: all 0.18s ease-out;
+      transition: all 0.15s ease-out;
     }
 
     .nav-links a:hover {
       color: var(--text);
-      border-color: rgba(148, 163, 184, 0.6);
-      background-color: rgba(15, 23, 42, 0.94);
+      border-color: var(--border);
+      background: rgba(15,23,42,0.96);
     }
 
     .nav-cta {
-      font-size: 12px;
-      padding: 7px 14px;
+      font-size: 11px;
+      padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.8);
+      border: 1px solid rgba(56,189,248,0.8);
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
       color: #0b1120;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      font-weight: 600;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.5);
-      white-space: nowrap;
+      font-weight: 600;
     }
 
-    .nav-cta span {
-      font-size: 15px;
-    }
-
-    @media (max-width: 700px) {
-      .nav-inner {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+    @media (max-width: 720px) {
       .nav-links {
         display: none;
+      }
+      .nav {
+        justify-content: space-between;
       }
     }
 
     /* HERO */
+
     .hero {
-      padding: 26px 0 18px;
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
-      gap: 32px;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 24px;
       align-items: center;
+      padding-top: 22px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(31,41,55,0.9);
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), rgba(15, 23, 42, 1));
-      color: var(--muted);
-      font-size: 11px;
-      margin-bottom: 14px;
-    }
-
-    .hero-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #4ade80;
-      box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.3);
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     .hero-title {
-      font-size: clamp(30px, 4vw, 38px);
-      line-height: 1.15;
-      margin-bottom: 12px;
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.1;
+      margin-bottom: 10px;
     }
 
     .hero-title span {
-      background: linear-gradient(120deg, #e5e7eb, #38bdf8, #a5b4fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--accent);
     }
 
     .hero-subtitle {
-      font-size: 18px;
+      font-size: 15px;
       color: var(--muted);
-      margin-bottom: 20px;
-      max-width: 540px;
+      margin-bottom: 14px;
     }
 
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 6px;
+      margin-bottom: 16px;
     }
 
-    .chip {
+    .tag {
       font-size: 11px;
-      padding: 6px 11px;
+      padding: 5px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.96);
       color: var(--muted);
     }
 
-    .chip-strong {
-      border-color: rgba(56, 189, 248, 0.8);
-      background: rgba(8, 47, 73, 0.9);
+    .tag-strong {
+      border-color: rgba(56,189,248,0.8);
+      background: var(--accent-soft);
       color: #e0f2fe;
     }
 
@@ -246,557 +202,316 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text);
       font-size: 12px;
-      font-weight: 500;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.96);
+      color: var(--text);
       text-decoration: none;
-      transition: all 0.18s ease-out;
+      transition: all 0.15s ease-out;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      border-color: rgba(56, 189, 248, 0.9);
+      border-color: rgba(56,189,248,0.9);
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
       color: #0b1120;
-      box-shadow: 0 12px 35px rgba(56, 189, 248, 0.6);
+      font-weight: 600;
     }
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
-      border-color: rgba(148, 163, 184, 0.8);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(56, 189, 248, 0.75);
-    }
-
-    .btn span {
-      font-size: 16px;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.9);
     }
 
     .hero-note {
-      margin-top: 14px;
       font-size: 11px;
       color: var(--muted);
     }
 
-    .hero-note strong {
-      color: #e5e7eb;
-    }
-
-    .hero-right {
-      border-radius: var(--radius-xl);
+    .hero-box {
+      border-radius: var(--radius);
+      background: var(--bg-alt);
       border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 55%),
-        rgba(15, 23, 42, 0.98);
-      padding: 18px 18px 22px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .hero-right::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.16), transparent 60%),
-        linear-gradient(120deg, rgba(56, 189, 248, 0.35), transparent 30%, transparent 70%, rgba(56, 189, 248, 0.28));
-      mix-blend-mode: soft-light;
-      opacity: 0.42;
-      pointer-events: none;
-    }
-
-    .hero-right-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .stat-card {
-      border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top left, rgba(15, 118, 110, 0.3), rgba(15, 23, 42, 0.96));
-      padding: 8px 9px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .stat-value {
-      display: block;
-      font-size: 16px;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .hero-flow {
-      margin-top: 2px;
-      border-radius: 16px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      padding: 12px 12px 10px;
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    .hero-flow-title {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 7px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .flow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.22);
-    }
-
-    .flow-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 10px;
-    }
-
-    .flow-step {
-      flex: 1;
-      min-width: 105px;
-      border-radius: 999px;
-      padding: 6px 9px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-    }
-
-    .flow-step strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .flow-step span {
-      font-size: 16px;
-      opacity: 0.9;
-    }
-
-    .hero-tech {
-      margin-top: 12px;
-      font-size: 11px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .hero-tech b {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    @media (max-width: 860px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero-right {
-        padding: 14px 13px 17px;
-      }
-      .hero-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .stat-card:nth-child(3) {
-        grid-column: span 2;
-      }
-    }
-
-    /* SECTIONS */
-    section {
-      margin-top: 28px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: 16px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow);
       font-size: 12px;
     }
 
-    .section-subtitle {
-      font-size: 11px;
+    .hero-box h2 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .hero-box ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 0;
+    }
+
+    .hero-box li {
+      margin-bottom: 4px;
       color: var(--muted);
     }
 
-    .grid-2 {
+    /* GENEL BÖLÜM STİLİ */
+
+    section {
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(31,41,55,0.9);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .two-cols {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
       gap: 18px;
     }
 
-    @media (max-width: 860px) {
-      .grid-2 {
+    @media (max-width: 800px) {
+      .two-cols {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    /* HAKKIMDA & YETENEKLER */
     .card {
-      border-radius: var(--radius-lg);
+      background: var(--bg-alt);
+      border-radius: var(--radius);
       border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.96);
-      padding: 16px 16px 15px;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .card p {
+      padding: 14px 14px 12px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.7);
       font-size: 13px;
       color: var(--muted);
     }
 
-    .card p + p {
-      margin-top: 8px;
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--text);
     }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
+    /* YETENEKLER */
 
-    .pill {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--muted);
-    }
-
-    .pill-ghost {
-      border-style: dashed;
-      border-color: rgba(148, 163, 184, 0.7);
-    }
-
-    /* ÇALIŞMA ŞEMASI */
-    .process {
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background:
-        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 55%),
-        rgba(15, 23, 42, 0.97);
-      padding: 16px 16px 14px;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .process-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .process-header p {
-      font-size: 12px;
-      color: var(--muted);
-      max-width: 480px;
-    }
-
-    .process-badge {
-      font-size: 11px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.8);
-      background: rgba(8, 47, 73, 0.85);
-      color: #e0f2fe;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .process-steps {
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      position: relative;
-      margin-top: 4px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 6px;
     }
 
-    @media (max-width: 900px) {
-      .process-steps {
+    @media (max-width: 800px) {
+      .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-
-    @media (max-width: 600px) {
-      .process-steps {
+    @media (max-width: 520px) {
+      .skills-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .process-step {
-      border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.96);
+    .skill-box {
+      background: rgba(15,23,42,0.96);
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.35);
       padding: 9px 10px;
+      font-size: 12px;
+    }
+
+    .skill-box strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .skill-box ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .skill-box li {
       font-size: 11px;
       color: var(--muted);
-      position: relative;
-      overflow: hidden;
     }
 
-    .process-step::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), transparent 55%);
-      opacity: 0.7;
-      pointer-events: none;
+    /* ÇALIŞMA ŞEMASI */
+
+    .flow {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      font-size: 12px;
     }
 
-    .process-step-inner {
-      position: relative;
-      z-index: 1;
+    .flow-steps {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 12px;
+      column-gap: 8px;
     }
 
-    .process-step-head {
+    .flow-step {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      margin-bottom: 4px;
+      gap: 8px;
     }
 
-    .step-num {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.8);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: #e0f2fe;
-      background: rgba(8, 47, 73, 0.85);
-    }
-
-    .process-step-title {
-      font-size: 12px;
-      font-weight: 500;
-      color: #e5e7eb;
-    }
-
-    .process-step-meta {
-      font-size: 10px;
+    .flow-box {
+      min-width: 150px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.96);
       color: var(--muted);
-    }
-
-    /* DENEYİM / PROJELER */
-    .timeline {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.96);
-      padding: 14px 14px 10px;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 80px minmax(0, 1fr);
-      gap: 10px;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .timeline-item:last-child {
-      border-bottom: none;
-    }
-
-    .timeline-date {
       font-size: 11px;
-      color: var(--muted);
     }
 
-    .timeline-main {
-      font-size: 12px;
-    }
-
-    .timeline-main strong {
+    .flow-box strong {
       display: block;
-      color: #e5e7eb;
-      margin-bottom: 2px;
-    }
-
-    .timeline-main span {
-      display: block;
-      font-size: 11px;
-      color: var(--muted);
+      color: var(--text);
       margin-bottom: 3px;
     }
 
-    .timeline-main p {
+    .flow-arrow {
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    @media (max-width: 680px) {
+      .flow-steps {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    /* DENEYİM */
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .timeline-item {
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: rgba(15,23,42,0.96);
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .timeline-meta {
       font-size: 11px;
       color: var(--muted);
+      margin-bottom: 4px;
     }
 
-    @media (max-width: 600px) {
-      .timeline-item {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    /* PROJELER */
 
-    .project-grid {
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
+      margin-top: 8px;
     }
 
-    @media (max-width: 700px) {
-      .project-grid {
+    @media (max-width: 720px) {
+      .projects-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .project-card {
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.96);
+    .project {
+      background: rgba(15,23,42,0.96);
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.4);
       padding: 10px 11px;
       font-size: 12px;
-      box-shadow: var(--shadow-subtle);
+      color: var(--muted);
     }
 
     .project-title {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 4px;
     }
 
     .project-title strong {
-      font-size: 13px;
+      color: var(--text);
     }
 
     .project-tag {
       font-size: 10px;
       padding: 3px 7px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--muted);
-    }
-
-    .project-card p {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 5px;
-    }
-
-    .project-meta {
-      font-size: 10px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 10px;
-    }
-
-    .project-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      border: 1px solid rgba(148,163,184,0.6);
     }
 
     /* İLETİŞİM */
-    .contact {
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(56, 189, 248, 0.6);
-      background:
-        radial-gradient(circle at top, rgba(56, 189, 248, 0.25), transparent 60%),
-        rgba(15, 23, 42, 0.98);
-      padding: 16px 16px 14px;
-      box-shadow: var(--shadow-soft);
-    }
 
-    .contact p {
+    .contact-box {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      border: 1px solid rgba(56,189,248,0.6);
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow);
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 10px;
     }
 
     .contact-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 10px;
       font-size: 12px;
     }
 
     .contact-item {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(148,163,184,0.7);
       padding: 6px 10px;
-      background: rgba(15, 23, 42, 0.98);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      background: rgba(15,23,42,0.98);
     }
 
     .contact-item a {
-      color: #e0f2fe;
       text-decoration: none;
-    }
-
-    .contact-item span {
-      font-size: 14px;
-      opacity: 0.9;
+      color: #e0f2fe;
     }
 
     footer {
@@ -804,23 +519,25 @@
       font-size: 11px;
       color: var(--muted);
       text-align: center;
+      padding-top: 8px;
+      border-top: 1px solid rgba(31,41,55,0.9);
     }
 
     footer a {
       color: var(--accent);
       text-decoration: none;
     }
-
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- NAVBAR -->
-    <header class="nav">
-      <div class="nav-inner">
+
+    <!-- NAV -->
+    <header>
+      <div class="nav">
         <div class="nav-left">
           <div class="nav-avatar">CÖ</div>
-          <div class="nav-name">
+          <div class="nav-text">
             <strong>Cem Özdemir</strong>
             <span>Yazılım Geliştirici</span>
           </div>
@@ -828,391 +545,332 @@
         <nav class="nav-links">
           <a href="#about">Hakkımda</a>
           <a href="#skills">Yetenekler</a>
-          <a href="#process">Çalışma Şeklim</a>
+          <a href="#flow">Çalışma Şeması</a>
+          <a href="#experience">Deneyim</a>
           <a href="#projects">Projeler</a>
           <a href="#contact">İletişim</a>
         </nav>
-        <a href="#contact" class="nav-cta">
-          Benimle Çalışın
-          <span>➜</span>
-        </a>
+        <a href="#contact" class="nav-cta">İletişime Geç</a>
       </div>
     </header>
 
     <!-- HERO -->
     <section class="hero">
       <div>
-        <div class="hero-badge">
-          <div class="hero-badge-dot"></div>
-          Freelancer & proje bazlı çalışmalar için uygun
-        </div>
         <h1 class="hero-title">
-          <span>Veri odaklı, temiz kodlu</span> çözümler geliştiriyorum.
+          Merhaba, ben <span>Cem Özdemir</span>.
         </h1>
         <p class="hero-subtitle">
-          Backend servisler, REST API’ler ve veritabanı odaklı sistemler geliştiriyorum.
-          İş gereksinimlerini teknik mimariye çevirip, sade ve sürdürülebilir çözümler üretmeye odaklanıyorum.
+          Backend ağırlıklı çalışan, API ve veritabanı odaklı çözümler üreten bir yazılım geliştiriciyim.
+          İş süreçlerini sadeleştiren ve bakımı kolay sistemler kurmayı seviyorum.
         </p>
 
         <div class="hero-tags">
-          <span class="chip chip-strong">Python · Node.js · MSSQL</span>
-          <span class="chip">REST API Tasarımı</span>
-          <span class="chip">Veri modelleme</span>
-          <span class="chip">Bulut & otomasyon</span>
+          <span class="tag tag-strong">Python · Node.js · MSSQL</span>
+          <span class="tag">REST API Geliştirme</span>
+          <span class="tag">Veri modelleme</span>
+          <span class="tag">Kurumsal projeler</span>
         </div>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">
-            <span>✉</span> Projeniz için iletişime geçin
-          </a>
-          <a href="#projects" class="btn">
-            <span>⚙</span> Çözümlerimi incele
-          </a>
+          <a href="#contact" class="btn btn-primary">Projeniz için yazın</a>
+          <a href="#projects" class="btn">Örnek çalışmalarımı görün</a>
         </div>
 
         <p class="hero-note">
-          <strong>Kısa özet:</strong> İş süreçlerinizi analiz eder, veri & API odaklı bir mimari kurgular,
-          net dokümantasyonla birlikte size teslim ederim.
+          Kısa bir mail ile mevcut sorununuzu veya hayalinizdeki sistemi anlatmanız,
+          teknik çözümü konuşmamız için yeterli.
         </p>
       </div>
 
-      <aside class="hero-right">
-        <div class="hero-right-inner">
-          <div class="hero-stats">
-            <div class="stat-card">
-              2017’den beri
-              <span class="stat-value">Profesyonel deneyim</span>
-            </div>
-            <div class="stat-card">
-              Çeşitli sektörlerde
-              <span class="stat-value">Kurumsal projeler</span>
-            </div>
-            <div class="stat-card">
-              Odağım
-              <span class="stat-value">Bakımı kolay sistemler</span>
-            </div>
-          </div>
-
-          <div class="hero-flow">
-            <div class="hero-flow-title">
-              <div class="flow-dot"></div>
-              Tipik proje akışım
-            </div>
-            <div class="flow-steps">
-              <div class="flow-step">
-                <span>①</span>
-                <div>
-                  <strong>Analiz</strong><br />
-                  İhtiyaç, veri ve mevcut altyapı analizi.
-                </div>
-              </div>
-              <div class="flow-step">
-                <span>②</span>
-                <div>
-                  <strong>Tasarım</strong><br />
-                  API, veritabanı ve iş akışı mimarisi.
-                </div>
-              </div>
-              <div class="flow-step">
-                <span>③</span>
-                <div>
-                  <strong>Geliştirme</strong><br />
-                  Test edilebilir, dökümante edilmiş kod.
-                </div>
-              </div>
-              <div class="flow-step">
-                <span>④</span>
-                <div>
-                  <strong>Devreye alma</strong><br />
-                  İzleme, loglama ve iyileştirme.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-tech">
-            <b>Teknolojiler:</b> Python, Node.js, MSSQL, REST, JSON, Git, Linux, AWS / bulut tabanlı servisler.
-          </div>
-        </div>
+      <aside class="hero-box">
+        <h2>Ne tür işler yapıyorum?</h2>
+        <ul>
+          <li>• Yeni projeler için backend & veritabanı tasarımı</li>
+          <li>• Mevcut sistemlerde performans problemi yaşayan sorguların iyileştirilmesi</li>
+          <li>• Farklı uygulamalar arasında REST API entegrasyonları</li>
+          <li>• Yönetim ve operasyon ekipleri için raporlama altyapıları</li>
+        </ul>
       </aside>
     </section>
 
-    <!-- HAKKIMDA & YETENEKLER -->
+    <!-- HAKKIMDA -->
     <section id="about">
-      <div class="section-header">
-        <div class="section-title">
-          <span>👤</span> Hakkımda & Odak Noktalarım
+      <h2 class="section-title">Hakkımda</h2>
+      <p class="section-subtitle">
+        Kısaca kimim, ne yaparım ve birlikte çalışırken nasıl bir yaklaşım bekleyebilirsiniz?
+      </p>
+
+      <div class="two-cols">
+        <div class="card">
+          <p>
+            Ben <strong>Cem Özdemir</strong>. Özellikle veri tabanı, iş kuralları ve API katmanı
+            üzerine yoğunlaşmış bir yazılım geliştiricisiyim.
+          </p>
+          <p>
+            Odak noktam; iş ihtiyacını iyi anlamak, gereksiz karmaşıklıktan kaçınmak
+            ve yıllarca ayakta kalabilecek, bakımı kolay sistemler kurmak.
+          </p>
+          <p>
+            Teknik kısmı kadar, teknik olmayan ekiplerle sade bir dilde konuşabilmeye
+            de önem veriyorum. “Bu ekran neden böyle çalışıyor?” sorusuna, teknik terimlere boğmadan yanıt verebilmeyi hedeflerim.
+          </p>
         </div>
-        <div class="section-subtitle">
-          Teknik detayların yanında iş tarafını da anlamayı önemsiyorum.
+
+        <div class="card">
+          <h3>Kısaca çalışma tarzım</h3>
+          <p>Çalışırken özellikle şunlara dikkat ederim:</p>
+          <ul style="margin-top:6px; padding-left:16px;">
+            <li>İhtiyacı netleştiren kısa toplantılar</li>
+            <li>Veri modelini baştan doğru kurgulama</li>
+            <li>Dokümante edilmiş REST API’ler</li>
+            <li>Basit ama anlaşılır loglama ve hata yönetimi</li>
+            <li>Gerektiğinde küçük eğitim / aktarım oturumları</li>
+          </ul>
         </div>
       </div>
+    </section>
 
-      <div class="grid-2">
-        <div class="card">
-          <p>
-            Merhaba, ben <strong>Cem Özdemir</strong>. Veri tabanlı uygulamalar, entegrasyonlar ve
-            iş süreçlerini dijitalleştiren backend servisleri geliştiriyorum.
-          </p>
-          <p>
-            Teknik tarafta güçlü olmak kadar, iş gereksinimini yalınlaştırıp doğru soruları sormanın da
-            kritik olduğuna inanıyorum. Amacım; karmaşık görünen işleri, net ve yönetilebilir sistemlere
-            dönüştürmek.
-          </p>
-          <p>
-            Kurumsal projelerde; raporlama, performans, bakım kolaylığı ve dokümantasyon konularına ayrıca dikkat ederim.
-          </p>
+    <!-- YETENEKLER -->
+    <section id="skills">
+      <h2 class="section-title">Yetenekler</h2>
+      <p class="section-subtitle">
+        En çok değer kattığım alanlar ve kullandığım teknolojiler.
+      </p>
+
+      <div class="skills-grid">
+        <div class="skill-box">
+          <strong>Backend & API</strong>
+          <ul>
+            <li>REST API tasarımı</li>
+            <li>Python / Node.js tabanlı servisler</li>
+            <li>JSON tabanlı veri alışverişi</li>
+          </ul>
         </div>
-
-        <div class="card">
-          <p><strong>Öne çıkan yeteneklerim:</strong></p>
-          <div class="pill-row">
-            <span class="pill">MSSQL üzerinde karmaşık sorgular</span>
-            <span class="pill">Stored procedure & performans iyileştirme</span>
-            <span class="pill">REST API tasarımı ve dokümantasyonu</span>
-            <span class="pill">Veri modelleme & ilişkilendirme</span>
-            <span class="pill">İş süreçlerini sisteme dökme</span>
-            <span class="pill pill-ghost">Teknik olmayan ekiplerle sade iletişim</span>
-          </div>
+        <div class="skill-box">
+          <strong>Veritabanı</strong>
+          <ul>
+            <li>MSSQL üzerinde kompleks sorgular</li>
+            <li>Stored procedure & performans</li>
+            <li>Raporlama odaklı veri modeli</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <strong>Entegrasyon</strong>
+          <ul>
+            <li>3. parti API’lerle entegrasyon</li>
+            <li>Veri senkronizasyonu</li>
+            <li>Kimlik doğrulama / güvenlik temelleri</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <strong>İş Süreci Dijitalleştirme</strong>
+          <ul>
+            <li>Excel / manuel süreçlerin sisteme alınması</li>
+            <li>Onay akışları</li>
+            <li>Görev & durum takibi</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <strong>Altyapı & Araçlar</strong>
+          <ul>
+            <li>Git ile versiyon kontrol</li>
+            <li>Temel Linux / sunucu yönetimi</li>
+            <li>Bulut tabanlı servisler (AWS vb.)</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <strong>İletişim</strong>
+          <ul>
+            <li>Teknik olmayan ekiplere sade anlatım</li>
+            <li>Temiz dokümantasyon</li>
+            <li>Uzaktan çalışma disiplini</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- ÇALIŞMA ŞEMASI -->
-    <section id="process">
-      <div class="section-header">
-        <div class="section-title">
-          <span>🗺</span> Çalışma Şeklim (Şema)
-        </div>
-        <div class="section-subtitle">
-          Analizden canlıya geçişe kadar tipik bir proje akışını görselleştiriyorum.
-        </div>
-      </div>
+    <section id="flow">
+      <h2 class="section-title">Çalışma Şemam</h2>
+      <p class="section-subtitle">
+        Birlikte çalışmaya başladığımızda tipik olarak aşağıdaki adımlardan geçeriz.
+      </p>
 
-      <div class="process">
-        <div class="process-header">
-          <p>
-            Aşağıdaki şema, bir projeye başlarken izlediğim tipik adımları özetler. Her adım, iş hedefine
-            hizalanmış olması için müşteriyle birlikte netleştirilir.
-          </p>
-          <div class="process-badge">
-            <span>◎</span> Uçtan uca yaklaşım
-          </div>
-        </div>
+      <div class="flow">
+        <p>
+          Bu şema, ister sıfırdan yeni bir sistem kuralım ister mevcut bir süreci
+          iyileştirelim, genelde izlediğim yolun özetidir.
+        </p>
 
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="process-step-inner">
-              <div class="process-step-head">
-                <div class="step-num">1</div>
-                <div>
-                  <div class="process-step-title">İhtiyaç & süreç analizi</div>
-                  <div class="process-step-meta">Toplantı · mevcut sistemler · veri yapısı</div>
-                </div>
-              </div>
-              <p>
-                İş akışları, manuel işlemler ve mevcut hatalar tespit edilir. Kapsam netleştirilir.
-              </p>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-box">
+              <strong>1. İhtiyaç & keşif</strong>
+              Mevcut süreç, kullanılan araçlar ve hedefler üzerinden kısa bir analiz.
             </div>
+            <div class="flow-arrow">➜</div>
           </div>
 
-          <div class="process-step">
-            <div class="process-step-inner">
-              <div class="process-step-head">
-                <div class="step-num">2</div>
-                <div>
-                  <div class="process-step-title">Teknik tasarım</div>
-                  <div class="process-step-meta">Mimari · veri modeli · entegrasyon</div>
-                </div>
-              </div>
-              <p>
-                Veritabanı şeması, API uçları, entegrasyon noktaları ve güvenlik detayları planlanır.
-              </p>
+          <div class="flow-step">
+            <div class="flow-box">
+              <strong>2. Tasarım & planlama</strong>
+              Veritabanı, API uçları ve iş akışının kaba tasarımı, önceliklendirme.
             </div>
+            <div class="flow-arrow">➜</div>
           </div>
 
-          <div class="process-step">
-            <div class="process-step-inner">
-              <div class="process-step-head">
-                <div class="step-num">3</div>
-                <div>
-                  <div class="process-step-title">Geliştirme & test</div>
-                  <div class="process-step-meta">Versiyon kontrol · test ortamı</div>
-                </div>
-              </div>
-              <p>
-                Parça parça geliştirme, versiyonlama ve test ile ilerlenir. Geri bildirim döngüsü kısa tutulur.
-              </p>
+          <div class="flow-step">
+            <div class="flow-box">
+              <strong>3. Geliştirme & geri bildirim</strong>
+              Parça parça geliştirme, test ortamında deneme ve birlikte inceleme.
             </div>
+            <div class="flow-arrow">➜</div>
           </div>
 
-          <div class="process-step">
-            <div class="process-step-inner">
-              <div class="process-step-head">
-                <div class="step-num">4</div>
-                <div>
-                  <div class="process-step-title">Canlıya alma & izleme</div>
-                  <div class="process-step-meta">Loglama · iyileştirme</div>
-                </div>
-              </div>
-              <p>
-                Canlı ortam geçişi sonrası izleme, loglama ve gerektiğinde performans tuning yapılır.
-              </p>
+          <div class="flow-step">
+            <div class="flow-box">
+              <strong>4. Canlıya alma & iyileştirme</strong>
+              Canlı sistem, log ve izleme ile gerektiğinde ek optimizasyon.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DENEYİM & PROJELER -->
-    <section id="projects">
-      <div class="section-header">
-        <div class="section-title">
-          <span>⚙</span> Deneyim & Örnek Projeler
+    <!-- DENEYİM -->
+    <section id="experience">
+      <h2 class="section-title">Deneyim</h2>
+      <p class="section-subtitle">
+        Özet olarak hangi tip projelerde ve rollerde yer aldım?
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Yazılım Geliştirici</strong>
+          <div class="timeline-meta">2017 – Günümüz · Backend & veri odaklı projeler</div>
+          <p>
+            Farklı sektörlerde; veritabanı yoğun uygulamalar, süreç otomasyonu ve
+            API entegrasyonları içeren projelerde yer aldım.
+          </p>
         </div>
-        <div class="section-subtitle">
-          Gerçek iş problemlerini çözen, veri ve entegrasyon odaklı çalışmalar.
+
+        <div class="timeline-item">
+          <strong>Raporlama & veri çözümleri</strong>
+          <div class="timeline-meta">Operasyon & yönetim ekipleriyle çalışma</div>
+          <p>
+            Karmaşık sorguların sadeleştirildiği, performans odaklı raporlama altyapıları
+            ve dashboard’lar için backend geliştirmeleri yaptım.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <strong>Entegrasyon projeleri</strong>
+          <div class="timeline-meta">3. parti servisler ile veri alışverişi</div>
+          <p>
+            Harici API’lerle entegrasyon, veri doğrulama, hata yönetimi ve loglama gibi
+            konuların kritik olduğu projelerde aktif rol aldım.
+          </p>
         </div>
       </div>
+    </section>
 
-      <div class="grid-2">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2017 – Günümüz</div>
-            <div class="timeline-main">
-              <strong>Yazılım Geliştirici</strong>
-              <span>Farklı kurumsal projeler · Türkiye</span>
-              <p>
-                Backend ağırlıklı geliştirme, MSSQL sorgu optimizasyonu, API entegrasyonları ve iş
-                süreçlerini dijitalleştiren çözümler üzerinde çalıştım.
-              </p>
-            </div>
-          </div>
+    <!-- PROJELER -->
+    <section id="projects">
+      <h2 class="section-title">Örnek Çalışmalar</h2>
+      <p class="section-subtitle">
+        Detay isimler gizlenebilir ama aşağıdaki tipte projelerde deneyim sahibiyim.
+      </p>
 
-          <div class="timeline-item">
-            <div class="timeline-date">Veri & Raporlama</div>
-            <div class="timeline-main">
-              <strong>Raporlama süreçleri</strong>
-              <span>Operasyonel & yönetim raporları</span>
-              <p>
-                Karmaşık sorgular, özet tablolar ve otomatikleşmiş raporlama süreçleri ile iş
-                ekiplerinin karar alma sürecini hızlandıracak çözümler geliştirdim.
-              </p>
-            </div>
+      <div class="projects-grid">
+        <div class="project">
+          <div class="project-title">
+            <strong>Operasyon izleme paneli</strong>
+            <span class="project-tag">MSSQL · API</span>
           </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">Entegrasyonlar</div>
-            <div class="timeline-main">
-              <strong>Servis & API entegrasyonları</strong>
-              <span>3. parti sistemlerle haberleşme</span>
-              <p>
-                Harici servislerle güvenli entegrasyonlar, veri alışverişi ve iş akışı senkronizasyonu
-                sağlayan projeler geliştirdim.
-              </p>
-            </div>
-          </div>
+          <p>
+            Farklı tablolardan gelen verileri tek ekranda toplayan, filtrelenebilir ve
+            performanslı çalışan bir backend katmanı.
+          </p>
         </div>
 
-        <div class="project-grid">
-          <div class="project-card">
-            <div class="project-title">
-              <strong>Operasyon Dashboard’u</strong>
-              <span class="project-tag">MSSQL · API · Raporlama</span>
-            </div>
-            <p>
-              Farklı tablolardaki verileri birleştirip, performanslı sorgular ile operasyon ekibine
-              tek ekrandan izlenebilir bir panel sunan backend servisi.
-            </p>
-            <div class="project-meta">
-              <span>• Karmaşık join & agregasyonlar</span>
-              <span>• Önbellekleme ile hız iyileştirme</span>
-              <span>• Esnek filtreleme</span>
-            </div>
+        <div class="project">
+          <div class="project-title">
+            <strong>REST API katmanı</strong>
+            <span class="project-tag">Python / Node.js</span>
           </div>
+          <p>
+            Birden fazla uygulamanın aynı veri modelini kullanmasını sağlayan,
+            dokümante edilmiş REST API uçları.
+          </p>
+        </div>
 
-          <div class="project-card">
-            <div class="project-title">
-              <strong>REST API Katmanı</strong>
-              <span class="project-tag">Python / Node.js</span>
-            </div>
-            <p>
-              Farklı uygulamaların aynı veri modelini kullanmasını sağlayan, dökümante edilmiş
-              REST API katmanı tasarımı ve geliştirmesi.
-            </p>
-            <div class="project-meta">
-              <span>• Swagger / OpenAPI</span>
-              <span>• Versiyonlanmış endpoint’ler</span>
-              <span>• Loglama & hata yönetimi</span>
-            </div>
+        <div class="project">
+          <div class="project-title">
+            <strong>Veri temizleme & dönüşüm</strong>
+            <span class="project-tag">ETL benzeri yapı</span>
           </div>
+          <p>
+            Farklı sistemlerden gelen verilerin temizlenip, tek raporlama
+            yapısında birleştirilmesi için arka plan süreçleri.
+          </p>
+        </div>
 
-          <div class="project-card">
-            <div class="project-title">
-              <strong>Veri Temizleme & Dönüşüm</strong>
-              <span class="project-tag">ETL · SQL</span>
-            </div>
-            <p>
-              Farklı kaynaklardan gelen verilerin tek bir tutarlı yapıda toplanması, temizlenmesi
-              ve raporlanabilir hale getirilmesi için ETL benzeri süreçler.
-            </p>
-            <div class="project-meta">
-              <span>• Veri kalitesi kuralları</span>
-              <span>• Otomatikleştirilmiş işler</span>
-            </div>
+        <div class="project">
+          <div class="project-title">
+            <strong>İş süreci dijitalleştirme</strong>
+            <span class="project-tag">Süreç otomasyonu</span>
           </div>
-
-          <div class="project-card">
-            <div class="project-title">
-              <strong>İş Süreci Dijitalleştirme</strong>
-              <span class="project-tag">Süreç otomasyonu</span>
-            </div>
-            <p>
-              Excel ve manuel takip edilen süreçlerin, veritabanı + servis mimarisiyle dijital bir
-              iş akışına dönüştürülmesi.
-            </p>
-            <div class="project-meta">
-              <span>• Onay akışları</span>
-              <span>• Görev takip mantığı</span>
-            </div>
-          </div>
+          <p>
+            Excel ve e-posta üzerinden yürüyen onay süreçlerinin, veritabanı ve
+            servis tabanlı bir yapıya taşınması.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- İLETİŞİM -->
     <section id="contact">
-      <div class="section-header">
-        <div class="section-title">
-          <span>✉</span> Birlikte Çalışalım
-        </div>
-        <div class="section-subtitle">
-          Kısa bir özet ve varsa mevcut sistemleriniz ile yazmanız yeterli.
-        </div>
-      </div>
+      <h2 class="section-title">İletişim</h2>
+      <p class="section-subtitle">
+        Projenizi, yaşadığınız bir problemi veya aklınızdaki fikri kısaca yazmanız yeterli.
+      </p>
 
-      <div class="contact">
+      <div class="contact-box">
         <p>
-          Mevcut bir projeniz, geliştirilmesini istediğiniz bir modül veya “şöyle bir fikrimiz var”
-          dediğiniz bir ürün için benimle iletişime geçebilirsiniz. Teknik detayları birlikte netleştirebiliriz.
+          Uzun uzun teknik doküman hazırlamanıza gerek yok. Kısaca:
+        </p>
+        <ul style="margin-top:6px; padding-left:16px;">
+          <li>Hangi alanda bir sistem / geliştirme istediğinizi,</li>
+          <li>Varsa mevcutta kullandığınız yazılımları,</li>
+          <li>Yaklaşık zaman beklentinizi</li>
+        </ul>
+        <p style="margin-top:6px;">
+          yazarsanız, birlikte nasıl ilerleyebileceğimizi netleştiririz.
         </p>
 
         <div class="contact-row">
           <div class="contact-item">
-            <span>📨</span>
+            <strong>Mail:</strong>
             <a href="mailto:info@cemozdemir.net.tr">info@cemozdemir.net.tr</a>
           </div>
           <div class="contact-item">
-            <span>🌐</span>
+            <strong>Site:</strong>
             <a href="https://cemozdemir.net.tr" target="_blank" rel="noopener noreferrer">
               cemozdemir.net.tr
             </a>
           </div>
-          <!-- İstersen buraya LinkedIn / GitHub linklerini de eklersin -->
+          <!-- Bunları kendi profil linklerinle değiştir -->
           <div class="contact-item">
-            <span>💼</span>
+            <strong>LinkedIn:</strong>
             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-              LinkedIn profilim
+              Profilim
+            </a>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub:</strong>
+            <a href="https://github.com/cemozdemir2" target="_blank" rel="noopener noreferrer">
+              github.com/cemozdemir2
             </a>
           </div>
         </div>
@@ -1225,7 +883,6 @@
   </div>
 
   <script>
-    // Alt kısımdaki yılı otomatik doldur
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
